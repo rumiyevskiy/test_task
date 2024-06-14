@@ -1,0 +1,153 @@
+.wrapper {
+    font-family: Poppins;
+    min-height: 100%;
+    background-color: #FAFBFF;
+    overflow: hidden;
+    display: flex;
+    gap: 71px;
+}
+
+
+
+/* ****************************************************** */
+
+.wrapper__menu {
+    min-height: 100%;
+    width: 306px;
+    box-shadow: 0px 10px 60px 0px rgba(226, 236, 249, 0.5);
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.wrapper__page {
+    min-height: 100%;
+    flex: 1 1 0%;
+    
+    background-color: #fff;
+}
+
+/* ****************************************************** */
+
+.menu__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 36px 28px;
+}
+
+.menu__header {
+    
+}
+
+.menu__logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo__name {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.logo__version {
+    font-size: 10px;
+    font-weight: 500;
+    color: #838383;
+}
+
+/* ****************************************************** */
+
+.menu__field {
+    flex: 1 1 auto;
+}
+
+.menu__nav {
+    margin-top: 45px;
+}
+
+.nav__list {
+}
+
+.list__item {
+    display: flex;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 8px 10px 11px;
+    margin: 8px 0px;
+    gap: 14px;
+    border: 1px solid #ffffff;
+}
+
+.item__body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.item__icon {
+    width: 24px;
+    height: 24px;
+}
+
+.item__name {
+    color: #9197B3;
+}
+
+.item__arrow {
+    width: 16px;
+    height: 16px;
+    background: url('../img/icons/arrow2.svg') no-repeat;
+}
+
+.list__item:hover {
+    border: 1px solid #5932EA;
+}
+
+.list__item:focus .item__name {
+    color: #ffffff;
+}
+
+.list__item:focus .item__arrow {
+    background: url('../img/icons/arrow2_hover.svg') no-repeat;
+}
+
+.list__item:focus .item__icon path{
+    stroke: #ffffff;
+    /* fill: yellowgreen; */
+}
+
+.list__item:focus {
+    background-color: #5932EA;
+}
+
+
+
+
+/* ****************************************************** */
+
+.menu__footer {
+    
+}
+
+
+
+
+/* ****************************************************** */
+
+
+
+@media (max-width: 1199.98px) {
+    
+}
+
+@media (max-width: 990.98px) {
+    
+}
+
+@media (max-width: 767.98px) {
+    /* .wrapper__menu {
+        width: 120px;
+    } */
+}
