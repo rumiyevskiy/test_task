@@ -22,7 +22,7 @@
 .wrapper__page {
     min-height: 100%;
     flex: 1 1 0%;
-    padding: 36px 95px 15% 0;
+    padding: 36px 95px 0 0;
 }
 
 /* ****************************************************** */
@@ -179,10 +179,10 @@
 .page__field {
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%;
+    /* flex: 1 1 0%; */
     background-color: #ffffff;
     border-radius: 30px;
-    padding: 30px 53px 40px 38px;
+    padding: 30px 0 40px 0;
     box-shadow: 0px 10px 60px 0px rgba(226, 236, 249, 0.5);
 }
 
@@ -190,6 +190,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 53px 26px 38px ;
 }
 
 .field__header__title {
@@ -235,8 +236,94 @@
     flex: 1 1 0%;
 }
 
+.field__body__table {
+
+}
+
+.table__data {
+    width: 100%;
+}
+
+table, th, td {
+    border-collapse: collapse;
+
+}
+
+thead tr {
+    height: 50px;
+}
+
+tbody tr td {
+    height: 70px;
+}
+
+th {
+    font-weight: 500;
+    text-align: left;
+    font-size: 14px;
+    color: #B5B7C0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+th:first-child {
+    padding-left: 38px;
+}
+
+th:last-child {
+    padding-right: 67px;
+    text-align: center;
+}
+
+td div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-right: 10px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #292D32;
+}
+
+
+tbody tr td:first-child{
+    padding-left: 38px;
+}
+
+tbody tr td:last-child{
+    padding-right: 57px;
+}
+
+.status__btn__box {
+}
+
+.status__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 30px;
+    padding-right: 0;
+    background-color: rgba(22, 192, 152, 0.38);
+    border: 1px solid #00B087;
+    border-radius: 4px;
+    color: #008767;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.status__btn--inactive {
+    background-color: #FFC5C5;
+    border: 1px solid #DF0404;
+    border-radius: 4px;
+    color: #DF0404;
+}
+
 .field__footer {
-    
+    padding: 30px 40px 26px 38px;
 }
 
 .field__footer__content {
@@ -252,7 +339,39 @@
 }
 
 .field__footer__content__pagination {
+    display: flex;
+    justify-content: center;
 }
+
+.field__footer__content__pagination__content {
+    display: flex;
+    justify-content: center;
+}
+
+.field__footer__content__pagination__list {
+    display: flex; 
+}
+
+.field__footer__content__pagination__item {
+    padding: 6px 10px;
+    margin: 0 6px;
+    cursor: pointer;
+    color: #404B52;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+
+}
+
+.field__footer__content__pagination__item--active {
+    background-color: #5932EA;
+    color: #ffffff;
+}
+
+
+
+
 
 
 /* ****************************************************** */
