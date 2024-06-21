@@ -13,16 +13,17 @@
 
 .wrapper__menu {
     min-height: 100%;
-    width: 306px;
+    min-width: 306px;
     box-shadow: 0px 10px 60px 0px rgba(226, 236, 249, 0.5);
     background-color: #fff;
     overflow: hidden;
 }
 
 .wrapper__page {
+    display: flex;
     min-height: 100%;
     flex: 1 1 0%;
-    padding: 36px 95px 0 0;
+    padding: 36px 95px 120px 0;
 }
 
 /* ****************************************************** */
@@ -168,6 +169,8 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    flex: 1 1 0%;
+
 }
 
 .page__greetings {
@@ -179,7 +182,11 @@
 .page__field {
     display: flex;
     flex-direction: column;
-    /* flex: 1 1 0%; */
+    flex: 1 1 0%;
+
+    height: 100%;
+    overflow: auto;
+
     background-color: #ffffff;
     border-radius: 30px;
     padding: 30px 0 40px 0;
@@ -232,16 +239,21 @@
     outline: none;
 }
 
+/* ****************************************************** */
+
 .field__body {
-    flex: 1 1 0%;
+    height: 100%;
 }
 
 .field__body__table {
+        
 
 }
 
 .table__data {
+    /* display: none; */
     width: 100%;
+
 }
 
 table, th, td {

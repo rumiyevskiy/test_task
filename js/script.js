@@ -30,9 +30,40 @@ async function getData() {
 
 async function main() {
 
-    const customersData = await getData();
+  // *****************************************
+  let countRows;
+  const customersData = await getData();
+ 
+  function getElementSize() {
+    return new Promise((resolve) => {
+      const element = document.querySelector('.field__body');
+      const rect = element.getBoundingClientRect();
+      let rectWidth = rect.width;
+      let rectHeight = rect.height;
+      countRows = Math.ceil((rectHeight - 110) / 70);
+      resolve();
+    });
+  }
+
+  await getElementSize();
+
+  window.addEventListener('load', async () => {
+    await getElementSize();
+    displayData(customersData, countRows, currentPage);
+    displayPagination(customersData, countRows);
+  });
+
+  window.addEventListener('resize', async () => {
+    await getElementSize();
+    displayData(customersData, countRows, currentPage);
+    displayPagination(customersData, countRows);
+  });
+
+
+// *****************************************
+
     let currentPage = 1;
-    let rows = 8;
+    let rows = countRows;
 
     function displayData (arrData, rowPerPage, page) {
 
@@ -164,8 +195,12 @@ async function main() {
       const ulEl = document.createElement('ul');
       ulEl.classList.add('field__footer__content__pagination__list');
 
-      for (let i = 0; i < pagesCount; i++) {
+      paginationEl.innerHTML = '';
 
+      let itemsCount;
+      
+
+      for (let i = 0; i < pagesCount; i++) {
         const liEl = displayPaginationBtn(i + 1);
         ulEl.appendChild(liEl);
       }
@@ -206,6 +241,12 @@ async function main() {
 
     displayData(customersData, rows, currentPage);
     displayPagination(customersData, rows);
+
+    // *****************************************
+
+
 }
+
+
 
 main();
