@@ -51,14 +51,8 @@ async function main() {
     await getElementSize();
     displayData(customersData, countRows, currentPage);
     displayPagination(customersData, countRows);
+    console.log('countRows: ', countRows);
   });
-
-  window.addEventListener('resize', async () => {
-    await getElementSize();
-    displayData(customersData, countRows, currentPage);
-    displayPagination(customersData, countRows);
-  });
-
 
 // *****************************************
 
@@ -141,7 +135,10 @@ async function main() {
 
         tableDataEl.appendChild(tableData);
 
-      })
+      });
+
+      
+
     };
 
     function displayPagination (arrData, rowPerPage) {
@@ -156,7 +153,10 @@ async function main() {
           currentPage--;
           displayData(customersData, rows, currentPage);
           let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
+
+          if (currentItemLi) {
             currentItemLi.classList.remove('field__footer__content__pagination__item--active');
+          }
           const arrLiEl = document.querySelectorAll('.field__footer__content__pagination__item');
           arrLiEl[currentPage].classList.add('field__footer__content__pagination__item--active');
         }
@@ -172,17 +172,25 @@ async function main() {
 
         itemRight.classList.add('field__footer__content__pagination__item--active');
 
-
-
         if(currentPage !== pagesCount) {
 
           currentPage++;
+
+          console.log('currentPage: ', currentPage);
+
           displayData(customersData, rows, currentPage);
+
           let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
+
+          if (currentItemLi) {
             currentItemLi.classList.remove('field__footer__content__pagination__item--active');
+          }
+
           const arrLiEl = document.querySelectorAll('.field__footer__content__pagination__item');
           arrLiEl[currentPage].classList.add('field__footer__content__pagination__item--active');
         }
+
+
 
       });
 
@@ -197,7 +205,10 @@ async function main() {
 
       paginationEl.innerHTML = '';
 
-      let itemsCount;
+      // *****************************************************
+     
+
+      // *****************************************************
       
 
       for (let i = 0; i < pagesCount; i++) {
@@ -224,13 +235,21 @@ async function main() {
 
           if(currentPage !== page) {
 
-            currentPage = page;
-            displayData(customersData, rows, currentPage);
+            currentPage = page;    
+            
 
+ 
             let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
-            currentItemLi.classList.remove('field__footer__content__pagination__item--active');
+
+            if (currentItemLi) {
+              currentItemLi.classList.remove('field__footer__content__pagination__item--active');
+            }            
 
             liEl.classList.add('field__footer__content__pagination__item--active');
+
+            console.log('currentPageLiClick: ', currentPage);
+
+            displayData(customersData, rows, currentPage);
 
           }          
 
