@@ -8,15 +8,86 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 const listItems = document.querySelectorAll('.list__item');
+const pageElementHeader = document.querySelector('.field__header');
+const pageElementHeaderItem = document.querySelector('.field__header__title__name');
 
-const pageElement = document.querySelector('.page__field');
+
+const tempElem = document.createElement('div');
+                tempElem.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur iste dolore dignissimos optio iure maxime, labore, molestiae ducimus laborum voluptatum consequuntur non ad exercitationem id alias, debitis illo. Odit excepturi nisi dolores dolorem. Itaque dignissimos, libero ullam deserunt, hic cum dolore deleniti magnam optio esse voluptate voluptatem ipsa cumque, mollitia similique exercitationem aliquam nam reprehenderit. Reprehenderit autem reiciendis adipisci impedit ipsam animi odio laborum labore cupiditate explicabo recusandae fugit deleniti sit voluptates harum eos, consequatur quibusdam temporibus culpa officiis blanditiis dolore corporis! Beatae vitae, ab aut ipsum totam dolor ad, dolorum illum consectetur eos a repellendus incidunt. Adipisci, eveniet.';
+                tempElem.style.padding = "20px";
+
+
 
 listItems.forEach(element => {
     element.addEventListener('click', (event) => {
             event.preventDefault();
             const hrefValue = element.getAttribute('href');
             
-            // pageElement.innerHTML = hrefValue;
+            if (hrefValue == '1') {
+              
+              document.querySelector('.field__header__title__name').innerText = 'Dashboard';
+              document.querySelector('.field__header__title__description').innerText = 'Active Dashboards';
+              document.querySelector('.field__footer__content__description').innerText = '';
+              document.querySelector('.field__footer__content__pagination__content').innerText = '';
+              document.querySelector('.field__body__table').innerText = '';
+              
+
+            }else
+
+              if (hrefValue == '2') {
+
+                document.querySelector('.field__header__title__name').innerText = 'All Products';
+                document.querySelector('.field__header__title__description').innerText = 'Product';
+                document.querySelector('.field__footer__content__description').innerText = '';
+                document.querySelector('.field__footer__content__pagination__content').innerText = '';
+                document.querySelector('.field__body__table').innerText = '';
+                document.querySelector('.field__body__table').appendChild(tempElem);
+
+            }else
+
+              if (hrefValue == '3') {
+
+                document.querySelector('.field__header__title__name').innerText = 'All Customers';
+                document.querySelector('.field__header__title__description').innerText = 'Active Members';
+                
+
+                main();
+
+              }else 
+
+                if (hrefValue == '4') {
+
+                  document.querySelector('.field__header__title__name').innerText = 'Income';
+                  document.querySelector('.field__header__title__description').innerText = 'Income';
+                  document.querySelector('.field__footer__content__description').innerText = '';
+                  document.querySelector('.field__footer__content__pagination__content').innerText = '';
+                  document.querySelector('.field__body__table').innerText = '';
+                  document.querySelector('.field__body__table').appendChild(tempElem);
+  
+              }else 
+
+              if (hrefValue == '5') {
+
+                document.querySelector('.field__header__title__name').innerText = 'Promote';
+                document.querySelector('.field__header__title__description').innerText = 'Promote';
+                document.querySelector('.field__footer__content__description').innerText = '';
+                document.querySelector('.field__footer__content__pagination__content').innerText = '';
+                document.querySelector('.field__body__table').innerText = '';
+                document.querySelector('.field__body__table').appendChild(tempElem);
+
+            }else
+
+            if (hrefValue == '6') {
+
+              document.querySelector('.field__header__title__name').innerText = 'Help';
+              document.querySelector('.field__header__title__description').innerText = 'Help';
+              document.querySelector('.field__footer__content__description').innerText = '';
+              document.querySelector('.field__footer__content__pagination__content').innerText = '';
+              document.querySelector('.field__body__table').innerText = '';
+              document.querySelector('.field__body__table').appendChild(tempElem);
+
+          };
+            
     }
 );
 });
@@ -268,4 +339,4 @@ async function main() {
 
 
 
-main();
+// main();

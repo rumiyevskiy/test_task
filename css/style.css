@@ -246,7 +246,7 @@
 }
 
 .field__body__table {
-        
+        /* padding: 0 53px 0 38px; */
 
 }
 
@@ -397,7 +397,11 @@ tbody tr td:last-child{
 }
 
 @media (max-width: 767.98px) {
-    /* .wrapper__menu {
-        width: 120px;
-    } */
+    .wrapper__menu {
+        position: absolute;
+        /* top: 0;
+        left: 0; */
+        display: flex;
+        min-height: 100%;
+    }
 }
