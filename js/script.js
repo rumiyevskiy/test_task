@@ -13,7 +13,7 @@ const pageElementHeaderItem = document.querySelector('.field__header__title__nam
 
 
 const tempElem = document.createElement('div');
-                tempElem.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur iste dolore dignissimos optio iure maxime, labore, molestiae ducimus laborum voluptatum consequuntur non ad exercitationem id alias, debitis illo. Odit excepturi nisi dolores dolorem. Itaque dignissimos, libero ullam deserunt, hic cum dolore deleniti magnam optio esse voluptate voluptatem ipsa cumque, mollitia similique exercitationem aliquam nam reprehenderit. Reprehenderit autem reiciendis adipisci impedit ipsam animi odio laborum labore cupiditate explicabo recusandae fugit deleniti sit voluptates harum eos, consequatur quibusdam temporibus culpa officiis blanditiis dolore corporis! Beatae vitae, ab aut ipsum totam dolor ad, dolorum illum consectetur eos a repellendus incidunt. Adipisci, eveniet.';
+                tempElem.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur iste dolore dignissimos optio iure maxime, labore, molestiae ducimus laborum voluptatum consequuntur non ad exercitationem id alias, debitis illo. Odit excepturi nisi dolores dolorem. Itaque dignissimos, libero ullam deserunt, hic cum dolore deleniti magnam optio esse voluptate voluptatem ipsa cumque, mollitia similique exercitationem aliquam nam reprehenderit. Reprehenderit autem reiciendis adipisci impedit ipsam animi odio laborum labore ';
                 tempElem.style.padding = "20px";
 
 
@@ -182,7 +182,7 @@ async function main() {
           const cellBox = document.createElement('div');
 
           if (key == 'status') {
-            let statusBtn = document.createElement('div');
+            let statusBtn = document.createElement('span');
             statusBtn.classList.add('status__btn');
 
             let rndNumber = Math.random() < 0.5 ? 1 : 2;
@@ -206,9 +206,7 @@ async function main() {
 
         tableDataEl.appendChild(tableData);
 
-      });
-
-      
+      });      
 
     };
 
@@ -334,9 +332,17 @@ async function main() {
 
     // *****************************************
 
-
 }
 
+const burgerBtn = document.querySelector('.burger__menu');
+burgerBtn.addEventListener('click', () => {
+  const menuField = document.querySelector('.wrapper__menu');
+  menuField.classList.add('open');
+})
 
+const burgerBtnCls = document.querySelector('.burger__menu--close');
+burgerBtnCls.addEventListener('click', () => {
+  const menuField = document.querySelector('.wrapper__menu');
+  menuField.classList.remove('open');
+})
 
-// main();
