@@ -1,5 +1,8 @@
 'use strict'
 
+import { data_reserv } from './data.js';
+
+
 // identify device
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.body.classList.add('_touch');
@@ -93,8 +96,17 @@ listItems.forEach(element => {
 });
 
 async function getData() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const data = await response.json();
+  let data;
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    data = await response.json();
+  } catch (error) {
+    console.error('Fetching data failed:', error);
+    data = data_reserv;
+  }
   return data;
 };
 
