@@ -92,7 +92,7 @@ listItems.forEach(element => {
           };
             
     }
-);
+  );
 });
 
 async function getData() {
@@ -133,8 +133,6 @@ async function main() {
   window.addEventListener('load', async () => {
     await getElementSize();
     displayData(customersData, countRows, currentPage);
-    displayPagination(customersData, countRows);
-    console.log('countRows: ', countRows);
   });
 
 // *****************************************
@@ -218,92 +216,73 @@ async function main() {
 
         tableDataEl.appendChild(tableData);
 
-      });      
-
-    };
-
-    function displayPagination (arrData, rowPerPage) {
-
-      const itemLeft = document.querySelector('.item__left');
-      itemLeft.addEventListener('mousedown', () => {
-
-        itemLeft.classList.add('field__footer__content__pagination__item--active');
-
-        if(currentPage !== 1) {
-
-          currentPage--;
-          displayData(customersData, rows, currentPage);
-          let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
-
-          if (currentItemLi) {
-            currentItemLi.classList.remove('field__footer__content__pagination__item--active');
-          }
-          const arrLiEl = document.querySelectorAll('.field__footer__content__pagination__item');
-          arrLiEl[currentPage].classList.add('field__footer__content__pagination__item--active');
-        }
-
       });
-
-      itemLeft.addEventListener('mouseup', () => {
-        itemLeft.classList.remove('field__footer__content__pagination__item--active');
-      });
-        
-      const itemRight = document.querySelector('.item__right');
-      itemRight.addEventListener('mousedown', () => {
-
-        itemRight.classList.add('field__footer__content__pagination__item--active');
-
-        if(currentPage !== pagesCount) {
-
-          currentPage++;
-
-          console.log('currentPage: ', currentPage);
-
-          displayData(customersData, rows, currentPage);
-
-          let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
-
-          if (currentItemLi) {
-            currentItemLi.classList.remove('field__footer__content__pagination__item--active');
-          }
-
-          const arrLiEl = document.querySelectorAll('.field__footer__content__pagination__item');
-          arrLiEl[currentPage].classList.add('field__footer__content__pagination__item--active');
-        }
-
-
-
-      });
-
-      itemRight.addEventListener('mouseup', () => {
-        itemRight.classList.remove('field__footer__content__pagination__item--active');
-      });
-
+      
       const paginationEl = document.querySelector('.field__footer__content__pagination__content');
       const pagesCount = Math.ceil(arrData.length / rowPerPage);
-      const ulEl = document.createElement('ul');
-      ulEl.classList.add('field__footer__content__pagination__list');
 
       paginationEl.innerHTML = '';
 
-      // *****************************************************
-     
+      const prevButton = document.querySelector('.item__left');
+      prevButton.style.pointerEvents = "auto";
+      if (currentPage > 1) {
+        prevButton.onclick = () => {
+            currentPage--;
+            displayData(customersData, rows, currentPage);
+        };
+      } else {prevButton.style.pointerEvents = "none"};      
 
-      // *****************************************************
-      
+      if (pagesCount <= 4) {
+        for (let i = 1; i <= pagesCount; i++) {
+            const pageButton = displayPaginationBtn(i, currentPage);
+            paginationEl.appendChild(pageButton);
+        }
+      } else {
+          if (currentPage > 2) {
+              const firstButton = displayPaginationBtn(1, currentPage);
+              paginationEl.appendChild(firstButton);
+          }
 
-      for (let i = 0; i < pagesCount; i++) {
-        const liEl = displayPaginationBtn(i + 1);
-        ulEl.appendChild(liEl);
+          if (currentPage > 3) {
+              const dots = document.createElement('span');
+              dots.textContent = '...';
+              paginationEl.appendChild(dots);
+          }
+
+          const startPage = Math.max(1, currentPage - 1);
+          const endPage = Math.min(pagesCount, currentPage + 1);
+
+          for (let i = startPage; i <= endPage; i++) {
+              const pageButton = displayPaginationBtn(i, currentPage);
+              paginationEl.appendChild(pageButton);
+          }
+
+          if (currentPage < pagesCount - 2) {
+              const dots = document.createElement('span');
+              dots.textContent = '...';
+              paginationEl.appendChild(dots);
+          }
+
+          if (currentPage < pagesCount - 1) {
+              const lastButton = displayPaginationBtn(pagesCount, currentPage);
+              paginationEl.appendChild(lastButton);
+          }                             
       }
 
-      paginationEl.appendChild(ulEl);
+        const nextButton = document.querySelector('.item__right');
+        nextButton.style.pointerEvents = "auto";
+        if (currentPage < pagesCount) {
+            nextButton.onclick = () => {
+                currentPage++;
+                displayData(customersData, rows, currentPage);
+            };
+        } else {nextButton.style.pointerEvents = "none"};    
 
     };
 
     function displayPaginationBtn (page) {
 
-        const liEl = document.createElement('li');
+        const liEl = document.createElement('button');
         liEl.classList.add('field__footer__content__pagination__item');
         liEl.innerText = page;
 
@@ -316,19 +295,15 @@ async function main() {
 
           if(currentPage !== page) {
 
-            currentPage = page;    
-            
+            currentPage = page;
 
- 
-            let currentItemLi = document.querySelector('li.field__footer__content__pagination__item--active');
+            let currentItemLi = document.querySelector('.field__footer__content__pagination__item--active');
 
             if (currentItemLi) {
               currentItemLi.classList.remove('field__footer__content__pagination__item--active');
             }            
 
             liEl.classList.add('field__footer__content__pagination__item--active');
-
-            console.log('currentPageLiClick: ', currentPage);
 
             displayData(customersData, rows, currentPage);
 
@@ -340,7 +315,6 @@ async function main() {
     };
 
     displayData(customersData, rows, currentPage);
-    displayPagination(customersData, rows);
 
     // *****************************************
 

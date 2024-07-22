@@ -1,8 +1,11 @@
+* {
+    scrollbar-width: none;
+}
+
 .wrapper {
     font-family: Poppins;
     min-height: 100%;
     background-color: #FAFBFF;
-    overflow: hidden;
     display: flex;
     gap: 71px;
 }
@@ -365,6 +368,7 @@ tbody tr td:last-child div{
 .field__footer__content__pagination {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .field__footer__content__pagination__content {
@@ -474,6 +478,43 @@ tbody tr td:last-child div{
     .burger__menu span {
         top: 50%;
         transform: scale(1) translate(0px, -50%);
+    }
+
+    .burger__menu--close {
+        z-index: 5;
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 18px;
+        cursor: pointer;
+
+        top: auto;
+        right: 20px;
+    }
+
+    .burger__menu--close::before,
+    .burger__menu--close::after {
+        left: 0;
+        position: absolute;
+        height: 10%;
+        width: 100%;
+        transition: all 0.3s ease 0s;
+        background-color: #000;
+    }
+
+    .burger__menu--close::before,
+    .burger__menu--close::after {
+        content: "";
+    }
+
+    .burger__menu--close::before {
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+
+    .burger__menu--close::after {
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
     }
 
 
